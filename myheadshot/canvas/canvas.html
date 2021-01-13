@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overview Canvas</title>
+</head>
+<body>
+	<main>
+		<h1>範例來源：即學即用HTML5行動裝置開發 ISBN:978-986-5714-20-8</h1>
+		<section>
+			<canvas id="can1" width="400" height="400"></canvas>	
+		</section>
+		<section>
+			<canvas id="can2" width="400" height="400"></canvas>
+		</section>
+		<section>
+			<canvas id="can3" width="300" height="300"></canvas>
+		</section>
+	</main>
+<script type="text/javascript">
+	var canvas = document.getElementById("can1");
+	var ctx = canvas.getContext("2d");
+	ctx.fillStyle = "rgb(255, 0, 0)";
+	ctx.fillRect(50, 50, 200, 200);
+
+	var canvas2 = document.getElementById("can2");
+	var c2tx = canvas2.getContext("2d");
+	c2tx.fillStyle = "rgb(255, 0, 0)";
+	c2tx.fillRect(50, 50, 200, 200);
+	c2tx.fillStyle = "rgba(0, 0, 255, 0.5)";
+	c2tx.fillRect(100, 100, 200, 200);
+
+	var canvas3 = document.getElementById("can3")
+	var c3tx = canvas3.getContext("2d");
+	c3tx.beginPath();
+	c3tx.moveTo(0,0); c3tx.lineTo(0,290); c3tx.lineTo(290,290);
+	c3tx.closePath();
+	c3tx.fillStyle = "rgb(200, 0, 0)";
+	c3tx.fill();
+</script>
+</body>
+</html>
