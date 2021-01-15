@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Deal With Image</title>
+
+	<style>
+		body{
+			font-family:宋體, Arial, Helvetica, sans-serif;
+			font-size: 80%;
+		}
+		#dp{
+			width: 200px;
+			min-height: 70px;
+			border: 1px solid #000;
+			background-color: #e00;
+			padding: 1em;
+			margin:2em;
+		}
+		#dp img {
+			margin-right: 1em;
+		}
+	</style>
+	<script>
+		(function () {
+			var dp = null;
+			var reader = null;
+
+			window.addEventListener("load", function() {
+				dp= document.getElementById("dp");
+				dp.addEventListener("dragover", function(evt){
+					evt.preventDefault();
+				}, false);
+
+				dp.addEventListener("drop", function(evt){
+					evt.preventDefault();
+					file_droped(evt);
+				}, false);
+			}, false);
+
+			function file_droped(evt) {
+				while( dp.firstChild ) {
+					dp.removeChild(dp.firstChild);
+				}
+				var file = evt.dataTransfer.files[0];
+				reader = new FileReader();
+
+				if( ! /^image/.test(file.type) ) {
+					alert("please drop in image file");
+				}
+
+				reader.readAsDataURL(file);
+				reader.onload = prepare_image;
+			}
+
+			function prepare_image(evt){
+				var image = document.createElement("img");
+				image.setAttribute("src", reader.result);
+				dp.appendChild(image);
+				image.onload = function() {
+					var w = parseInt(image.width);
+					var h = parseInt(image.height);
+
+					var canvas = document.createElement("canvas");
+					canvas.width = w;
+					canvas.height = h;
+					var ctx = canvas.getContext("2d");
+					ctx.drawImage(image, 0, 0);
+					var imagedata = ctx.getImageData(0, 0, w, h);
+					convert_image_to_gray_scale(imagedata.data);
+					ctx.putImageData(imagedata, 0, 0);
+					dp.appendChild(canvas);
+				}
+			}
+
+			function convert_image_to_gray_scale(data){
+				var len = data.length;
+				var pixels = len/4;
+				for( var i=0; i<pixels; i++){
+					var r = data[ i*4 ];
+					var g = data[ i*4 + 1 ];
+					var b = data[ i*4+2 ];
+					var g = parseInt( (11*r +16*g + 5*b)/32);
+
+					data[ i*4 ] = g;
+					data[ i*4+1 ] = g;
+					data[ i*4+2 ] = g;
+				}
+			}
+		})();
+	</script>
+</head>
+<body>
+	<div id="dp">
+		<p>drop the image to here</p>
+	</div>
+</body>
+</html>
