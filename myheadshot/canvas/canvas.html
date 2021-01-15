@@ -2,18 +2,58 @@
 <html>
 <head>
 	<title>Overview Canvas</title>
+	<style>
+		div{
+			display:inline-block;
+		}
+		section{
+			display:flex;
+			flex-direction:row;
+			overflow-x:scroll;
+		}
+	</style>
 </head>
 <body>
 	<main>
 		<h1>範例來源：即學即用HTML5行動裝置開發 ISBN:978-986-5714-20-8</h1>
 		<section>
-			<canvas id="can1" width="400" height="400"></canvas>	
+			<div>
+				<h2>rectangle</h2>
+				<canvas id="can1" width="400" height="400"></canvas>	
+			</div>
+			<div>
+				<h2>opacity effect</h2>
+				<canvas id="can2" width="400" height="400"></canvas>
+			</div>
+			<div>
+				<h2>triangle</h2>
+				<canvas id="can3" width="300" height="300"></canvas>
+			</div>
+			<div>
+				<h2>touch then draw triangle effect</h2>
+				<canvas id="can4" width="300" height="300"></canvas>
+			</div>
 		</section>
 		<section>
-			<canvas id="can2" width="400" height="400"></canvas>
+			<div>
+				<h2>colors</h2>
+				<canvas id="can5" width="300" height="150"></canvas>
+			</div>
+			<div>
+				<h2>arc()</h2>
+				<canvas id="can6" width="300" height="300"></canvas>
+			</div>
+			<div>
+				<h2>arcTo()</h2>
+				<canvas id="can7" width="300" height="300"></canvas>
+			</div>
 		</section>
 		<section>
-			<canvas id="can3" width="300" height="300"></canvas>
+			<div>
+				<h2>circle gradient effec</h2>
+				<canvas id="can8" width="300" height="300"></canvas>
+				<canvas id="can9" width="300" height="300"></canvas>
+			</div>
 		</section>
 	</main>
 <script type="text/javascript">
@@ -22,12 +62,14 @@
 	ctx.fillStyle = "rgb(255, 0, 0)";
 	ctx.fillRect(50, 50, 200, 200);
 
+
 	var canvas2 = document.getElementById("can2");
 	var c2tx = canvas2.getContext("2d");
 	c2tx.fillStyle = "rgb(255, 0, 0)";
 	c2tx.fillRect(50, 50, 200, 200);
 	c2tx.fillStyle = "rgba(0, 0, 255, 0.5)";
 	c2tx.fillRect(100, 100, 200, 200);
+
 
 	var canvas3 = document.getElementById("can3")
 	var c3tx = canvas3.getContext("2d");
@@ -36,6 +78,101 @@
 	c3tx.closePath();
 	c3tx.fillStyle = "rgb(200, 0, 0)";
 	c3tx.fill();
+
+
+	var canvas4 = document.getElementById("can4");
+	var c4tx = canvas4.getContext("2d");
+	canvas4.onmousedown = function(event){
+		var x = event.offsetX;
+		var y = event.offsetY;
+		var r = Math.random()*10 + 5;
+		console.log("event fire" + ", x: ", + x + ", y: "+ y);
+
+		c4tx.beginPath();
+		c4tx.moveTo(x, y);
+		c4tx.lineTo(x, y + r);
+		c4tx.lineTo(x + r, y);
+		c4tx.lineTo(x, y);
+
+		c4tx.strokeStyle = "red";
+		c4tx.stroke();
+	};
+
+
+	var canvas5 = document.getElementById("can5");
+	var c5tx = canvas5.getContext("2d");
+	c5tx.beginPath();
+	c5tx.arc(150, 45, 35, 0, Math.PI*2, false);
+	c5tx.fillStyle = 'rgba(192, 80, 77, 0.7)';
+	c5tx.fill();
+	c5tx.strokeStyle = 'rgba(192, 80, 70, 1';
+	c5tx.stroke();
+
+	c5tx.beginPath();
+	c5tx.arc(125, 95, 35, 0, Math.PI*2, false);
+	c5tx.fillStyle = 'rgba(155, 187, 89, 0.7)';
+	c5tx.fill();
+	c5tx.strokeStyle = 'rgba(155, 187, 89, 1';
+	c5tx.stroke();
+
+	c5tx.beginPath();
+	c5tx.arc(175, 95, 35, 0, Math.PI*2, false);
+	c5tx.fillStyle = 'rgba(128, 100, 162, 0.7)';
+	c5tx.fill();
+	c5tx.strokeStyle = 'rgba(128, 100, 162, 1';
+	c5tx.stroke();
+
+
+	var canvas6 = document.getElementById("can6");
+	var c6tx = canvas6.getContext("2d");
+	c6tx.fillStyle = "#f0f0f0";
+	c6tx.fillRect(0, 0, 300, 300);
+	c6tx.beginPath();
+	var startAngle = 0;
+	var endAngle = 120 * Math.PI/180;
+	c6tx.arc(150, 150, 100, startAngle, endAngle, false);
+	c6tx.strakeStyle = "#f00";
+	c6tx.lineWidth = 3;
+	c6tx.stroke();
+
+	
+	var canvas7 = document.getElementById("can7");
+	var c7tx = canvas7.getContext("2d");
+	c7tx.fillStyle = "#f0f0f0";
+	c7tx.fillRect(0, 0, 300, 300);
+
+	c7tx.beginPath();
+	c7tx.moveTo(20, 20);
+	c7tx.arcTo(290, 150, 30, 280, 20);
+	c7tx.lineTo(30, 280);
+
+	c7tx.strokeStyle = "#00f";
+	c7tx.lineWidth = 3;
+	c7tx.stroke();
+
+
+	var canvas8 = document.getElementById("can8");
+	var c8tx = canvas8.getContext("2d");
+
+	var g8 = c8tx.createRadialGradient(150, 150, 50, 150, 150, 100);
+	g8.addColorStop(0.3, "red");
+	g8.addColorStop(0.7, "yellow");
+	g8.addColorStop(1.0, "blue");
+
+	c8tx.fillStyle = g8;
+	c8tx.fillRect(20, 20, 260, 260);
+
+
+	var canvas9 = document.getElementById("can9");
+	var c9tx = canvas9.getContext("2d");
+	var g9 = c9tx.createRadialGradient(30, 30, 20, 170, 170, 100);
+
+	g9.addColorStop(0.3, "red");
+	g9.addColorStop(0.7, "yellow");
+	g9.addColorStop(1.0, "blue");
+
+	c9tx.fillStyle = g9;
+	c9tx.fillRect(30, 30, 260, 260);
 </script>
 </body>
 </html>
