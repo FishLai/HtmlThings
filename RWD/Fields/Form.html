@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Overview HTML5 Fields</title>
+	<style>
+		input:placeholder-shown {
+			color: #333;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<section>
+			<fieldset>
+				<legend>About the offending film (part 1 of 3)</legend>
+				<div>
+					<label for="film">The film in question?</label>
+					<input type="text" id="film" name="film" placeholder="e.g. King Kong" required>
+				</div>
+				<div>
+					<label for="search">Search the site...</label>
+					<input type="search" id="search" name="search" placeholder="Wyatt Earp" autofocus>
+				</div>
+				<div>
+					<label for="tel"></label>
+					<input type="tel" id="tel" name="tel" placeholder="1-234-546758" autocomplete="off" required>
+				</div>
+			</fieldset>
+		</section>
+	</main>
+</body>
+</html>
