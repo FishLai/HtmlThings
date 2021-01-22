@@ -28,11 +28,16 @@
 	}
 }
 
-p {
+.brief-intro > p {
 	margin:0;
 	overflow-y:hidden;
-	height: 0;
+	height: auto;
 	animation: typeline 10s steps(10, end) forwards;
+}
+
+.brief-intro > p > span:nth-child(3)::after {
+	content:"|";
+	color:block;
 }
 
 @keyframes typeline {
@@ -43,6 +48,10 @@ p {
 	100% {
 		height: 201px;
 	}
+}
+/*
+.brief-intro > p:nth-child(1) {
+	border: 1px solid black;
 }
 
 span[data-cursor='1'] {
@@ -88,7 +97,7 @@ span[data-cursor='9'] {
 	animation: blinkcursor 2s infinite;
 	animation-delay: 9s;
 }
-
+*/
 
 @keyframes blinkcursor {
 	0% {
