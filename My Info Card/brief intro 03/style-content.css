@@ -14,7 +14,7 @@
 }	
 @media only screen and (orientation:portrait) {
 	.brief-intro {
-		font-size: 14px;
+		font-size: 4.375vw;
 		position: relative;
 		top: 8rem;
 	}
@@ -22,7 +22,7 @@
 
 @media only screen and (orientation:landscape) {
 	.brief-intro {
-		font-size: 16px;
+		font-size: 4.375vh;
 		position: relative;
 		top: 2rem;
 	}
