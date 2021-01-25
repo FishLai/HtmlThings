@@ -39,9 +39,20 @@
 	border-width: 0 7px 0 0;
 	border-style: solid;
 	border-color: darkblue;
-	animation: blinkcursor 1s step-end infinite;
+	-webkit-animation: blinkcursor 1s step-end infinite;
+	        animation: blinkcursor 1s step-end infinite;
 }
 
+
+@-webkit-keyframes blinkcursor {
+	0%, 100% {
+		border-color: transparent;
+	}
+
+	50% {
+		border-color: darkblue;
+	}
+}
 
 @keyframes blinkcursor {
 	0%, 100% {
