@@ -1,8 +1,12 @@
 .door-box {
 	position: absolute;
-	border: 1px solid darkgreen;
-	left: 81.8625%;
-	top:52.113%;
-	width: 44px;
-	height: 44px;
+	left: 70%;
+	top:50%;
+	width: 60px;
+	height: 60px;
+	transform: rotate(180deg);
+}
+
+#handle {
+	display:none;
 }
