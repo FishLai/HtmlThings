@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scroll Event</title>
+	<style>
+		html, body, main, section, div {
+			margin:0;
+			height:100%;
+		}
+		main {
+			display: flex;
+			flex-flow: row;
+		}
+		section {
+			margin:auto;
+			overflow: scroll;
+		}
+		div {
+			width:30vw;
+			margin:auto;
+			height:120vh;
+			background-color: hsl(30, 100%, 50%);
+			overflow:scroll;
+		}
+		#test {
+			height:20px;
+			width: 20px;
+			background-color: hsl(60, 100%, 50%);
+		}
+		#test2 {
+			height:20px;
+			width:20px;
+			background-color: hsl(90, 100%, 50%);
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<section id="area1">
+			<div>
+				<p id="test"></p>
+			</div>			
+		</section>
+		<section id="area2">
+			<div>
+				<p id="test2"></p>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		//window.requestAnimationFrame(callback);
+		//window.addEventListener('scroll', function(){})
+
+		var area1 = document.getElementById('area1');
+		var area2 = document.getElementById('area2');
+		var div1 = area1.firstElementChild;
+		var div2 = area2.firstElementChild;
+		var c1 = 0;
+		function addInnerHTML(event) {
+			this.firstElementChild.innerHTML += 'test' + c1 +'<br>';
+			c1++;
+			//event.target.innerHTML += 'test <br>';
+		}
+		area1.addEventListener('scroll', addInnerHTML, false);
+
+		var ticking = false;
+		var c2 = 0;
+		function addInnerHTMLWithRAF() {
+
+			div2.innerHTML += 'test' + c2 +'<br>';
+			ticking = false;
+			c2++;
+		}
+		var count_s = 0;
+		function scrollWithRAF(event) {
+			console.log(count_s);
+			count_s++
+			if(!ticking) {
+				window.requestAnimationFrame(addInnerHTMLWithRAF);
+				ticking = true;
+			}
+		}
+
+		area2.addEventListener('scroll', scrollWithRAF, false);
+		/*
+		var start  = null;
+		var element = document.getElementById('test');
+		function step(timestamp) {
+			if (!start) start = timestamp;
+			var progress = timestamp - start;
+			element.style.transform = 'translateY(' + Math.min(progress / 10, 200) + 'px)';
+			if (progress < 2000) {
+				window.requestAnimationFrame(step);
+			}
+		}
+		window.requestAnimationFrame(step);
+		*/
+	</script>
+</body>
+</html>
