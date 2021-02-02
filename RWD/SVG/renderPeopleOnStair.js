@@ -7,6 +7,7 @@ function renderPerson() {
 	var pointOnStep = stair.node().getPointAtLength(path_len);
 	var svg = d3.select('svg');
 	var g_p = svg.append('g').attr('id', 'person');
+	
 	var person_height = 17*10*2;
 	var offset_onStep = {dx: 10, dy: -10}
 
@@ -125,7 +126,6 @@ function renderPerson() {
 			{x: origin.x, y: origin.y-len}
 		];
 	};
-
 }
 
 
