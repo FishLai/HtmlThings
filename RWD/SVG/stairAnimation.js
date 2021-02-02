@@ -49,3 +49,13 @@ function upStairs() {
 	upStairsAnimation();
 
 }
+
+/*
+	//
+var stair_widt = document.document.Element.clientWidth + 50;
+var scale = stair_width/520;
+var p_len = (50+520+50+260)scale -10;
+var step = d3.select('path[data-step-num="1"]');
+var r_foot_p = step.node().getPointAtLength(p_len);
+
+*/

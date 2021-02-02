@@ -110,6 +110,7 @@ function renderStairs() {
 		.attr('height', '50vh')
 		.attr('id', 'bg_svg')
 		.style('position', 'sticky')
+		.style('overflow', 'visible')
 		.style('top', '50vh');
 	//append group tag, g 
 	let svg_g = svg.append('g');
@@ -128,7 +129,7 @@ function renderStairs() {
     	.attr('stroke-width', '1px')
     	.attr('fill', 'none')
     	.attr('data-step-num', 0)
-    	.attr('transform-origin', String(pathData[1].x)+"px "+String(pathData[1].y)+"px");
+    	.style('transform-origin', String(pathData[1].x)+"px "+String(pathData[1].y)+"px");
 
     //base information to build stairs
 	let base_coor = {
@@ -156,4 +157,8 @@ function renderStairs() {
 	//add one more stair
 	let last_stair = addStair(proto_step, base_coor, count_stairs);
 	last_stair.style('opacity', 0);
+
+
 }
+
+renderStairs();
