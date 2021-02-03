@@ -1,12 +1,12 @@
 
-function upStairsAnimation() {
+function upStairsAnimation(speed) {
 	let num_stairs = d3.select('#stairs').selectChildren().nodes().length;
 	let last_stair = d3.select('path[data-step-num="'+String(num_stairs-1)+'"]');
 	let first_stair = d3.select('path[data-step-num="0"]');
 	let str_last_transf = last_stair.node().style.transform;
 
 	//change each step to forward step
-	const upSpeed = 1000;
+	const upSpeed = speed;
 	for(i=1; i<num_stairs; i++) {
 		this_stair = d3.select('path[data-step-num="'+String(i)+'"]');
 		forward_stair = d3.select('path[data-step-num="'+String(i-1)+'"]');
@@ -39,14 +39,14 @@ function upStairsAnimation() {
 		.attr('data-step-num', num_stairs-1);
 }
 
-function upStairs() {
+function upStairs(speed) {
 	
 	//want to find scale value
 	let re = /(?:scale\()+([0-9.]*)/;
 	let str_style_transf = d3.select('[data-step-num="1"]').node().style.transform;
 	let base_scale = parseFloat(str_style_transf.match(re)[1]);
 
-	upStairsAnimation();
+	upStairsAnimation(speed);
 
 }
 

@@ -26,3 +26,19 @@ var poly = svg.append('path')
 var data_leg = []
 
 curve_d = "m 170,308.4321 c 4.21,-70 10.21,-70 16.42,-55.83";
+
+
+var data2 = [
+	{x: 100, y:100},
+	{x: 125, y: 90},
+	{x: 100, y: 150}
+]
+
+var curve = d3.line(d => d.x, d => d.y)
+				.curve(d3.curveNatural);
+
+svg.append('path')
+	.attr('d', curve(data2))
+	.attr('stroke', 'red')
+	.attr('stroke-width', '2px')
+	.attr('fill', 'none');

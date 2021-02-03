@@ -33,9 +33,11 @@ function afterDoorAnimate() {
 	door.style.display = 'none';
 
 	//DOM_section, resume fade in
-	let DOM_resume = document.getElementById('resume');
+	let DOM_resume = document.getElementById('svgContainer');
 	DOM_resume.style.display = 'block';
 	DOM_resume.style.opacity = 1;
+
+	
 }
 
 window.addEventListener('load', function() {

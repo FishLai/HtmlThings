@@ -1,4 +1,7 @@
 
+renderStairs();
+
+
 function generateCorners() {
 	//would like to let step fit device width
 	let deviceWidth = document.documentElement.clientWidth;
@@ -105,7 +108,7 @@ function renderStairs() {
 	let pathData = generateCorners();
 
 	//append the backgound svg
-	let svg = d3.select('section#svg1').append('svg')
+	let svg = d3.select('section#svgContainer').append('svg')
 		.attr('width', '100%')
 		.attr('height', '50vh')
 		.attr('id', 'bg_svg')
@@ -161,4 +164,3 @@ function renderStairs() {
 
 }
 
-renderStairs();
