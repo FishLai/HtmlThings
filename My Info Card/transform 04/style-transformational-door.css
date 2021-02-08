@@ -8,6 +8,15 @@
 	left:-15px;
 	position: absolute;
 }
+@media only screen and (orientation: landscape) {
+	.door-border {
+		width:45%;
+		position: relative;
+		margin:auto;
+		top: -100vh;
+	}
+}
+
 .door-handle-box {
 	position: absolute;
 	left: 70%;
@@ -16,10 +25,17 @@
 	height: 60px;
 	transform: rotate(180deg);
 }
-
+@media only screen and (orientation: landscape) {
+	.door-handle-box {
+		left:50%;
+		top:70%;
+		transform: rotate(270deg);
+	}
+}
+/*
 .go-to-resume {
 	animation: opendoor ease-in-out forwards 4s;
-}
+}*/
 
 @keyframes opendoor {
 	0% {}
@@ -38,6 +54,33 @@
 
 	100% {
 		transform: rotate(180deg) scale(0.8) matrix(1, 0.3, 0, 1, -80, 35) rotateY(60deg);
+	}
+}
+@media only screen and (orientation: landscape) {
+	@keyframes opendoor {
+		0% {
+			margin:30px;
+		}
+
+		40% {
+			margin: 30px;
+			transform: rotate(90deg) scaleY(calc(0.8)) scaleX(calc(0.8)) matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		50% {
+			margin: 30px;
+			transform: rotate(90deg) scaleY(calc(0.8)) scaleX(calc(0.8)) matrix(1, 0, 0, 1, 0, 0) rotateX(10deg);
+		}
+
+		70% {
+			margin: 30px;
+			transform: rotate(90deg) scaleY(calc(0.8)) scaleX(calc(0.8)) matrix(1, 0, 0, 1, 0, 0) rotateX(30deg);
+		}
+
+		100% {
+			padding: 30px;
+			transform: rotate(90deg) scaleY(calc(0.8)) scaleX(calc(0.8)) matrix(1, 0, 0, 1, 0, 0) rotateX(60deg);
+		}
 	}
 }
 

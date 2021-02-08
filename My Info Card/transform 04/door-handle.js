@@ -37,6 +37,9 @@ function afterDoorAnimate() {
 	DOM_resume.style.display = 'block';
 	DOM_resume.style.opacity = 1;
 
+	let DOM_content = document.getElementById('content');
+	DOM_content.style.transform = "translateX(0)";
+
 	
 }
 

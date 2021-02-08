@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>find out door effect parameter</title>
+
+	<style>
+		html, body, main, section {
+			margin:0;
+			height:100%;
+		}
+		section {
+			background-color: skyblue;
+		}
+		.door-container {
+			transform:rotate(90deg) scale(calc((320/568)*0.8));
+			height:100%;
+			position:relative;
+			border-width:15px 0 15px 15px;
+			border-style: ridge;
+			overflow:hidden;
+			background-color:hsl(0, 10%, 70%);
+		}
+		.door {
+			background-color:darkred;
+			height: 100%;
+			position:relative;
+			transform-origin:bottom;
+			transform: perspective(1500px) rotateX(75deg) matrix(1, 0, 0.4, 1, 0, 0);
+			transition: transform ease-in 1s;
+			border-right-width: 7px;
+			border-right-style:solid;
+			border-right-color:hsl(0, 10%, 70%);
+		}
+
+	</style>
+</head>
+<body>
+	<main>
+		<section>
+			<div class="door-container">
+				<div class="door">
+					<input type="button" click="openDoor" value="open">
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
