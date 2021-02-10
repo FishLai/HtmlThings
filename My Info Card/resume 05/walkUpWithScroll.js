@@ -1,7 +1,6 @@
 window.addEventListener('load', function() {
 	var div_content = document.getElementById('content');
 	var onWalk = walkUp.infinite;
-	var scrolled = false;
 	var isScrolling;
 	var scroll_times = 0;
 	div_content.addEventListener('scroll', () => {
@@ -18,18 +17,4 @@ window.addEventListener('load', function() {
 			console.log(scroll_times);
 		}, 200);
 	}, false);
-
-	
-
-	function isScrolled() {
-		let scrollTop = div_content.scrollTop;
-		setTimeout(function() {
-			let scrollTop_now = div_content.scrollTop;
-			if(scrollTop != scrollTop_now) {
-				scrolled = true;
-			} else {
-				scrolled = false;
-			}
-		}, 750)
-	}
 }, false);
